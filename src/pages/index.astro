@@ -1,8 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-
-
 <Layout title="astro-cube">
   <style>
     .erotic-button {
@@ -56,65 +54,115 @@ import Layout from '../layouts/Layout.astro';
       }
     }
 
-    
+    /* Estilos para el diseño responsivo */
+    .flex-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .content, .image {
+      max-width: 100%;
+    }
+
+    .image img {
+      width: 100%;
+      height: auto;
+      max-width: 500px; /* Ajusta el tamaño máximo de la imagen */
+    }
+
+    .centered-image {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .centered-image img {
+      max-width: 100%;
+      height: auto;
+      max-width: 800px; /* Ajusta el tamaño máximo de la imagen */
+    }
+
+    @media (min-width: 768px) {
+      .flex-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .content {
+        flex: 1;
+        margin-right: 20px;
+      }
+
+      .image {
+        flex: 0 0 auto;
+      }
+
+      .centered-image img {
+        max-width: 700px; /* Ajusta el tamaño máximo de la imagen para pantallas grandes */
+      }
+    }
   </style>
 
   <main>
-    <article class="region prose wrapper hero">
-      <div class="title-container">
-        <h1>Horny Club</h1>
-        <button class="erotic-button" role="button">
-          <span>Access to the club</span>
-        </button>
+    <article class="region prose wrapper hero flex-container">
+      <div class="content">
+        <div class="title-container">
+          <h1>Horny Club</h1>
+          <button class="erotic-button" role="button">
+            <span>Access to the club</span>
+          </button>
+        </div>
+        <h2>
+          The best <a>erotic private club</a> in all the internet
+        </h2>
       </div>
-      <h2>
-        The best  <a>erotic private club</a> in all the internet
-      </h2>
+      <div class="image">
+        <img src="images/women4.png" alt="Descriptive Alt Text" />
+      </div>
     </article>
 
     <article class="region prose wrapper">
       <ul role="list" class="grid features">
         <li class="flow">
-          <h3>How can I acces?</h3>
+          <h3>How can I access?</h3>
           <p>
-            At the moment the acces to the  club is <em> limited </em>and just avaible, with a <em> personal invitation.</em>
+            At the moment the access to the club is <em>limited</em> and just available, with a <em>personal invitation.</em>
           </p>
         </li>
 
         <li class="flow">
-          <h3>What I can find in the club?</h3>
+          <h3>What can I find in the club?</h3>
           <p>
-           In our club you will can enjoy a diferents types of <em> shows </em> and
-            <em>special rooms </em> in streaming from our models.
+            In our club you will enjoy different types of <em>shows</em> and
+            <em>special rooms</em> streaming from our models.
           </p>
         </li>
 
         <li class="flow">
           <h3>Is it safe?</h3>
           <p>
-            Yes, our club is 100% client anonymous with  <a href=""
-              >a 0 logs politics</a
-            > so every client can preserve their privacy, just is identifaied with a 
-            <em> individual code </em> that give acces to the rooms.
+            Yes, our club is 100% client anonymous with <a href="">a 0 logs policy</a> so every client can preserve their privacy, just identified with an 
+            <em>individual code</em> that gives access to the rooms.
           </p>
         </li>
 
         <li class="flow">
-          <h3>How can i be a HornyClub Model?</h3>
+          <h3>How can I be a HornyClub Model?</h3>
           <p>
-            To be a model you have to go <a href="/model"
-              > to the registrion page</a
-            >, ther you will have all the conditions to start streaming
-           and start winning minimun <em>1k every months</em>. limited places for models.
+            To be a model you have to go <a href="/model">to the registration page</a>, there you will have all the conditions to start streaming and start earning a minimum of <em>1k every month</em>. Limited places for models.
           </p>
         </li>
       </ul>
     </article>
 
-    <footer class="region prose wrapper">
-       <a href="">© HornyClub 2024. All rights reserved.</a>
+    <div class="centered-image">
+      <img src="images/women5.png" alt="Sexy trio of girls" />
+    </div>
 
-      
+    <footer class="region prose wrapper">
+      <a href="">© HornyClub 2024. All rights reserved.</a>
     </footer>
   </main>
 </Layout>
