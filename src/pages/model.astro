@@ -1,0 +1,163 @@
+---
+import '~/styles/styles.css';
+import SEO from '../layouts/SEO.astro';
+
+const title = "Conditions and terms to be a HornyClub model";
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="/logo.png" />
+  <meta name="generator" content={Astro.generator} />
+  <meta name="theme-color" content="#9EA3FA" />
+
+  <SEO title={title} />
+
+  <title>{title}</title>
+
+  <!-- preload fonts -->
+  <link
+    rel="preload"
+    href="/fonts/SilkSerif-ExtraLight.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin=""
+  />
+  <link
+    rel="preload"
+    href="/fonts/SilkSerif-Light.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin=""
+  />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>{title}</h1>
+    </header>
+    <br>
+    <section>
+      <div class="scrollable-content">
+        <p>
+          Bienvenido a nuestra página. Antes de continuar, por favor lee las siguientes condiciones:
+        </p>
+        <br>
+        <ul>
+          <li>You must be over 18 years old to stream.</li>
+          
+          <li>Do not publish inappropriate content or content outside the theme of the club.</li>
+          
+          <li>You need to have more than X hours of streaming or more than 6 full rooms before earning the €1000 monthly payout.</li>
+          
+          <li>You have to verifed yoursalfe with a valid document before be a model of HornyClub</li>
+          
+          <li>To earn the fixed payment you will have to stream at least 4h every day for 20 days of month</li>
+          
+          <li>The payment will be via: PayPal, Stripe, Wise, or BTC</li>
+        </ul>
+        <p>
+            By clicking 'Accept', you agree to these terms and conditions.
+        </p>
+      </div>
+      <div class="checkbox-container">
+        <input type="checkbox" id="accept-checkbox" />
+        <label for="accept-checkbox">agree to these terms and conditions</label>
+        <button id="accept-button" disabled>Accept</button>
+      </div>
+    </section>
+    <script>
+      const checkbox = document.getElementById('accept-checkbox');
+      const button = document.getElementById('accept-button');
+
+      checkbox.addEventListener('change', function() {
+        button.disabled = !checkbox.checked;
+      });
+
+      button.addEventListener('click', function() {
+        if (checkbox.checked) {
+          alert('¡Gracias por aceptar las condiciones!');
+          // Redirige o realiza otra acción después de aceptar
+          window.location.href = '/'; // Cambia la URL de destino según sea necesario
+        }
+      });
+    </script>
+  </main>
+</body>
+
+<style>
+    /* styles.css */
+
+/* Asegúrate de que el body ocupe el 100% del viewport y tenga un margen de 0 */
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: auto; /* Permite el scroll si el contenido es más grande que la ventana */
+  background: var(--bg-color);
+  color: var(--fg-color);
+  font-family: var(--font-base);
+  font-size: var(--size-step-0);
+  display: flex;
+  justify-content: center; /* Centra horizontalmente el contenido */
+  align-items: center; /* Centra verticalmente el contenido */
+}
+
+main {
+  max-width: 80vw; /* Ancho máximo del contenido */
+  max-height: 80vh; /* Altura máxima del contenido */
+  overflow: hidden; /* No permite scroll en el contenedor principal */
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md); /* Espaciado interno */
+}
+
+header {
+  text-align: center; /* Centra el título */
+  margin-bottom: var(--space-md);
+}
+
+.scrollable-content {
+  flex: 1;
+  overflow-y: auto; /* Permite el scroll vertical si el contenido excede la altura */
+  padding: var(--space-md);
+  background: var(--bg-color-subtle);
+  border-radius: var(--border-radius-sm);
+}
+
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos horizontalmente */
+  margin-top: var(--space-md);
+}
+
+button {
+  background-color: var(--accent-color);
+  color: var(--fg-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: var(--size-step-0);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  margin-top: var(--space-sm);
+}
+
+button:disabled {
+  background-color: var(--color-gray-light);
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: darken(var(--accent-color), 10%);
+}
+
+label {
+  margin-left: 0.5rem;
+  font-size: var(--size-step-0);
+}
+
+</style>
+</html>
