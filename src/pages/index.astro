@@ -103,6 +103,110 @@ import Layout from '../layouts/Layout.astro';
         max-width: 700px; /* Ajusta el tamaño máximo de la imagen para pantallas grandes */
       }
     }
+
+
+
+    .popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none; /* Ocultar por defecto */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.popup-content {
+  background-image: url('images/glow.gif'); /* Ruta al GIF */
+  background-size: cover; /* Ajusta el tamaño del fondo para cubrir el contenedor */
+  background-position: center; /* Centra el fondo */
+  border-radius: 8px;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  position: relative; /* Necesario para posicionar el botón de cierre */
+  color: #fff; /* Ajusta el color del texto si es necesario para que contraste con el fondo */
+}
+.popup-content h2,
+.popup-content p {
+  visibility: hidden; /* Hacer que el texto sea invisible pero ocupe espacio */
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #aaa;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.popup-close:hover {
+  background: #888;
+}
+
+.popup-content h2 {
+  margin-top: 0;
+}
+
+.popup-content p {
+  margin-bottom: 20px;
+}
+
+
+.erotic-button1 {
+      align-items: center;
+      background-image: linear-gradient(144deg, #9843d4, #5643d3 50%, #246ad3);
+      border: 0;
+      border-radius: 8px;
+      box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      display: flex;
+      font-family: Phantomsans, sans-serif;
+      font-size: 20px;
+      justify-content: center;
+      line-height: 1em;
+      max-width: 80%;
+      min-width: 140px;
+      padding: 3px;
+      text-decoration: none;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      white-space: nowrap;
+      cursor: pointer;
+      margin-top: 50px;
+      text-transform: uppercase;
+    }
+
+    .erotic-button1:active,
+    .erotic-button1:hover {
+      outline: 0;
+    }
+
+    .erotic-button1 span {
+      background-color: rgb(5, 6, 45);
+      padding: 16px 24px;
+      border-radius: 6px;
+      width: 100%;
+      height: 100%;
+      transition: 300ms;
+    }
+
+    .erotic-button1:hover span {
+      background: none;
+    }
   </style>
 
   <main>
@@ -119,7 +223,7 @@ import Layout from '../layouts/Layout.astro';
         </h2>
       </div>
       <div class="image">
-        <img src="images/women4.png" alt="Descriptive Alt Text" />
+        <img src="images/women4.png" alt="Sexy model women in a hot black underwear" />
       </div>
     </article>
 
@@ -164,5 +268,48 @@ import Layout from '../layouts/Layout.astro';
     <footer class="region prose wrapper">
       <a href="">© HornyClub 2024. All rights reserved.</a>
     </footer>
+
+
+    <div class="popup-overlay" id="popup-overlay">
+      <div class="popup-content">
+        <button class="popup-close" id="popup-close">&times;</button>
+        <h2>Bienvenido a Horny Club</h2>
+        <p>¡Gracias por visitar nuestro sitio web! Explora nuestras ofertas exclusivas.</p>
+        <button class="erotic-button1" role="button" id="popup-button">
+          <span>PARTICIPATE</span>
+        </button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const popupOverlay = document.getElementById('popup-overlay');
+        const popupClose = document.getElementById('popup-close');
+        const popupButton = document.getElementById('popup-button');
+    
+        // Mostrar el pop-up después de 1 segundo
+        setTimeout(() => {
+          popupOverlay.style.display = 'flex';
+        }, 1000); // 1000 milisegundos = 1 segundo
+    
+        // Cerrar el pop-up al hacer clic en el botón de cerrar
+        popupClose.addEventListener('click', () => {
+          popupOverlay.style.display = 'none';
+        });
+    
+        // Cerrar el pop-up al hacer clic en el botón de explorar
+        popupButton.addEventListener('click', () => {
+          popupOverlay.style.display = 'none';
+        });
+    
+        // Cerrar el pop-up si se hace clic fuera del contenido del pop-up
+        popupOverlay.addEventListener('click', (event) => {
+          if (event.target === popupOverlay) {
+            popupOverlay.style.display = 'none';
+          }
+        });
+      });
+    </script>
+
   </main>
 </Layout>
