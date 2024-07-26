@@ -1,0 +1,268 @@
+---
+import '~/styles/styles.css';
+import SEO from '../layouts/SEO.astro';
+
+const title = "Launch Offer! WIN 200$";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="/logo.png" />
+  <meta name="generator" content={Astro.generator} />
+  <meta name="theme-color" content="#9EA3FA" />
+  <SEO title={title} />
+  <title>{title}</title>
+</head>
+<body>
+  <main>
+    
+
+    <div class="images-container">
+      <div class="image left-image"></div>
+      <div class="image right-image"></div>
+    </div>
+
+    <div class="form-container">
+      <header>
+        <h1>Launch Offer Requisites</h1>
+        <h2>Win Your $200</h2>
+        <p>Participate in our exclusive launch offer and stand a chance to win $200. <br> Fill out the form below to enter and receive an affiliate link to share with others!</p>
+      </header>
+      <form id="offer-form">
+        <h3>Complete the Form</h3>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+
+        <label for="question1">Blondes or Brunettes?</label>
+        <input type="text" id="question1" name="question1" required />
+
+        <label for="question2">Tall or Short?</label>
+        <input type="text" id="question2" name="question2" required />
+
+        <label for="question3">Breasts or Boobs?</label>
+        <input type="text" id="question3" name="question3" required />
+
+        <div class="affiliate-link-container">
+          <label for="affiliate-link">Affiliate Link:</label>
+          <input type="text" id="affiliate-link" name="affiliate-link" required />
+          <button type="button" id="generate-link">Generate Link</button>
+        </div>
+
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+
+    <script>
+      document.getElementById('offer-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData.entries());
+
+        fetch('/save-form-data', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(result => {
+          alert('Form submitted successfully!');
+          document.getElementById('offer-form').reset();
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('There was a problem submitting your form.');
+        });
+      });
+
+      document.getElementById('generate-link').addEventListener('click', function() {
+        const linkField = document.getElementById('affiliate-link');
+        linkField.value = `https://your-affiliate-link.com/?ref=${Math.random().toString(36).substr(2, 9)}`;
+      });
+    </script>
+  </main>
+
+  <style>
+    /* styles.css */
+
+/* Asegúrate de que el body ocupe el 100% del viewport y tenga un margen de 0 */
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url('/images/fondo2.jpg');
+  background-size: cover; /* La imagen cubre todo el área del body */
+  background-position: center; /* La imagen está centrada */
+  background-repeat: no-repeat; /* La imagen no se repite */
+  background-attachment: fixed; /* La imagen se mantiene fija durante el desplazamiento */
+  margin: 0; /* Asegúrate de que no haya márgenes alrededor del body */
+  height: 100vh;
+  color: #f0f0f0; /* Color de texto claro */
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.left-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  background: #333; /* Fondo del panel izquierdo */
+  color: #f0f0f0;
+  padding: 2rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.left-panel h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.left-panel p {
+  margin: 0.5rem 0;
+}
+
+.images-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none; /* Ensure that images don't interfere with form interaction */
+}
+
+.image {
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.left-image {
+  background: url('/images/left-image.jpg') no-repeat center center;
+}
+
+.right-image {
+  background: url('/path/to/right-image.jpg') no-repeat center center;
+}
+
+.form-container {
+  margin-left: 30%; /* Adjust margin-left to avoid overlap with the left panel */
+  width: 70%;
+  max-width: 600px;
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+header h2 {
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+header p {
+  font-size: 1rem;
+  margin-top: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #222;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  color: #f0f0f0;
+}
+
+input[type="text"],
+input[type="email"] {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background: #333;
+  color: #f0f0f0;
+}
+
+input[type="submit"] {
+  background-color: #6200b3;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+input[type="submit"]:hover {
+  background-color: #7013bd;
+}
+
+.affiliate-link-container {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.affiliate-link-container input {
+  width: calc(100% - 2rem);
+  display: inline-block;
+}
+
+.affiliate-link-container button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #163d61;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.affiliate-link-container button:hover {
+  background-color: #163d61;
+}
+
+  </style>
+</body>
+</html>

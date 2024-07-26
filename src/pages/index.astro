@@ -296,6 +296,14 @@ import Layout from '../layouts/Layout.astro';
         popupClose.addEventListener('click', () => {
           popupOverlay.style.display = 'none';
         });
+
+        popupButton.addEventListener('click', () => {
+      // Redirige a la página deseada
+      window.location.href = 'offer'; // Reemplaza con la URL de destino
+
+      // Opcional: ocultar el pop-up (si deseas ocultarlo antes de redirigir)
+      popupOverlay.style.display = 'none';
+    });
     
         // Cerrar el pop-up al hacer clic en el botón de explorar
         popupButton.addEventListener('click', () => {
